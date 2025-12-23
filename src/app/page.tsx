@@ -33,22 +33,32 @@ export default function VocalMasterApp() {
     }
   };
 
-  const playNote = (freq: number) => {
-    initAudio();
-    if (!audioCtx.current) return;
-    const osc = audioCtx.current.createOscillator();
-    const gain = audioCtx.current.createGain();
-    osc.connect(gain);
-    gain.connect(audioCtx.current.destination);
-    osc.frequency.value = freq;
-    gain.gain.setValueAtTime(0.3, audioCtx.current.currentTime);
-    gain.gain.exponentialRampToValueAtTime(
-      0.01,
-      audioCtx.current.currentTime + 1
-    );
-    osc.start();
-    osc.stop(audioCtx.current.currentTime + 1);
-  };
+const playNote = async (freq: number) => { // Tambahkan async
+  initAudio();
+  
+  if (!audioCtx.current) return;
+
+  if (audioCtx.current.state === 'suspended') {
+    await audioCtx.current.resume();
+  }
+
+  const osc = audioCtx.current.createOscillator();
+  const gain = audioCtx.current.createGain();
+
+  osc.connect(gain);
+  gain.connect(audioCtx.current.destination);
+
+  osc.frequency.value = freq;
+  
+  gain.gain.setValueAtTime(0.3, audioCtx.current.currentTime);
+  gain.gain.exponentialRampToValueAtTime(
+    0.01,
+    audioCtx.current.currentTime + 1
+  );
+
+  osc.start();
+  osc.stop(audioCtx.current.currentTime + 1); // Tambahkan stop agar memori tidak bocor
+};
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
