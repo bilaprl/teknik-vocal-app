@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Teknik Vocal App - Konsep Lengkap",
+  title: "Teknik Vocal App - Rizva",
   description: "Aplikasi pembelajaran teknik vokal profesional",
 };
 
