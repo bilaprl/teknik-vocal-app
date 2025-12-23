@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "VocalMaster Pro - Full Concept Edition",
+  title: "Teknik Vocal App - Konsep Lengkap",
   description: "Aplikasi pembelajaran teknik vokal profesional",
 };
 
