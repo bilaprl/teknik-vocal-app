@@ -1523,21 +1523,6 @@ function EkspresiSection({ setSection }: { setSection: (s: Section) => void }) {
           </p>
         </div>
       )}
-
-      {/* Selesai Latihan */}
-      <div className="mt-10">
-        <button
-          onClick={() => {
-            alert(
-              "Sesi Ekspresi Vokal Selesai! Anda telah belajar meniru teknik ekspresi profesional."
-            );
-            setSection("dashboard");
-          }}
-          className="w-full bg-slate-900 text-white py-5 rounded-full font-black text-sm uppercase tracking-widest hover:bg-slate-800 transition shadow-xl active:scale-95"
-        >
-          SELESAIKAN SESI
-        </button>
-      </div>
     </div>
   );
 }
